@@ -1,0 +1,52 @@
+version: '3.8'
+
+services:
+  # Backend FastAPI con SQLite
+  api:
+    build: ./backend
+    container_name: stravinsky-api
+    ports:
+      - "8090:8090"
+    environment:
+      - DATABASE_URL=sqlite:///./stravinsky.db
+    volumes:
+      - ./backend/stravinsky.db:/app/stravinsky.db
+    restart: unless-stopped
+    networks:
+      - stravinsky-network
+
+  # Frontend React
+  frontend:
+    build:
+      context: ./Frontend
+      dockerfile: Dockerfile
+    container_name: stravinsky-frontend
+    ports:
+      - "3000:3000"
+    depends_on:
+      - api
+    environment:
+      VITE_API_URL: "http://localhost:8090"
+    networks:
+      - stravinsky-network
+    restart: unless-stopped
+
+  # Nginx (Proxy inverso - opcional)
+  nginx:
+    image: nginx:alpine
+    container_name: stravinsky-nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+    depends_on:
+      - frontend
+      - api
+    networks:
+      - stravinsky-network
+    restart: unless-stopped
+
+networks:
+  stravinsky-network:
+    driver: bridge

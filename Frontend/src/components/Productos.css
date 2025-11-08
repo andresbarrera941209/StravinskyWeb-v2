@@ -1,0 +1,141 @@
+/* src/components/Productos.css */
+.product-card {
+  border: 1px solid #444;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background: #1a1a1a;
+  width: 100%;
+  height: 100%; /* ✅ Ocupa todo el espacio del contenedor padre */
+  display: flex;
+  flex-direction: column;
+  min-height: 400px; /* ✅ Misma altura mínima para todas */
+}
+
+/* ✅ Resto de estilos se mantiene igual */
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(212, 175, 55, 0.2);
+}
+
+.product-image-container {
+  width: 100%;
+  height: 220px;
+  overflow: hidden;
+  position: relative;
+  background: #2a2a2a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0; /* ✅ Evita que la imagen se reduzca */
+}
+
+.product-image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.product-card:hover .product-image-container img {
+  transform: scale(1.05);
+}
+
+.product-info {
+  padding: 20px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.product-info h3 {
+  margin: 0 0 12px 0;
+  color: #ffffff;
+  font-size: 1.3em;
+  font-weight: 600;
+  line-height: 1.3;
+  text-align: center;
+}
+
+.product-description {
+  color: #cccccc;
+  font-size: 0.9em;
+  margin: 0 0 15px 0;
+  flex: 1;
+  line-height: 1.4;
+  text-align: center;
+}
+
+.product-price {
+  font-size: 1.5em;
+  font-weight: bold;
+  color: #d4af37;
+  margin: 0 0 20px 0;
+  text-align: center;
+}
+
+.add-to-cart-btn {
+  width: 100%;
+  padding: 14px;
+  background: #d4af37;
+  color: #000000;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  font-size: 1em;
+  margin-top: auto;
+  flex-shrink: 0; /* ✅ Evita que el botón se reduzca */
+}
+
+.add-to-cart-btn:hover {
+  background: #ffd700;
+  transform: translateY(-2px);
+}
+
+
+@media (max-width: 768px) {
+  .product-card {
+    min-height: 380px;
+  }
+  
+  .product-image-container {
+    height: 180px;
+  }
+  
+  .product-info {
+    padding: 15px;
+  }
+  
+  .product-info h3 {
+    font-size: 1.1em;
+  }
+  
+  .product-price {
+    font-size: 1.3em;
+  }
+}
+
+@media (max-width: 480px) {
+  .product-card {
+    min-height: 360px;
+  }
+  
+  .product-image-container {
+    height: 160px;
+  }
+  
+  .product-info {
+    padding: 12px;
+  }
+  
+  .product-info h3 {
+    font-size: 1em;
+  }
+  
+  .product-price {
+    font-size: 1.2em;
+  }
+}

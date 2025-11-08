@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  api:
+    build: .
+    container_name: stravinsky-api
+    ports:
+      - "8090:8090"
+    environment:
+      - DATABASE_URL=sqlite:///./stravinsky.db
+    volumes:
+      - ./stravinsky.db:/app/stravinsky.db
+    restart: unless-stopped
