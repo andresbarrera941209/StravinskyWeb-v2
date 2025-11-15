@@ -44,7 +44,7 @@ export const products = [
     id: 6, 
     name: "Bajo Eléctrico", 
     price: 449.99, 
-    image: "https://casajayes.com/cdn/shop/files/bajo-electrico-ibanez-gsr205-bk-the-music-site-6.webp?v=1752264810", 
+    image: "https://audiomusica.vtexassets.com/arquivos/ids/165368/1-bajo-electrico-glamberry-sjb-305-5-cuerdas-black-1114338.jpg?v=638913253489700000", 
     category: "Cuerdas", 
     description: "Bajo eléctrico 4 cuerdas" 
   },
